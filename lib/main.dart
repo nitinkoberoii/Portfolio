@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Portfolio',
       theme: themeProvider.themeData,
-      home: const HomeScreen(),
+      home: const SidebarScreen(),
     );
   }
 }

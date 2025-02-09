@@ -9,8 +9,8 @@ import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 import '../widgets/theme_button.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class SidebarScreen extends StatelessWidget {
+  const SidebarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: containerColor,
                     ),
-                    child: const HomeScreenContent(),
+                    child: const HomeScreen(),
                   );
                 },
               ),

@@ -5,8 +5,8 @@ import 'package:portfolio/screens/HomeScreen/gradient_image_overlay.dart';
 import 'package:portfolio/widgets/download_resume_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomeScreenContent extends StatelessWidget {
-  const HomeScreenContent({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

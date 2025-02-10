@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/providers/theme_provider.dart';
-import 'package:portfolio/screens/sidebar_screen.dart';
+import 'package:portfolio/routes/app_routes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Portfolio',
       theme: themeProvider.themeData,
-      home: const SidebarScreen(),
+      routerConfig: appRouter,
     );
   }
 }

@@ -1,16 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/providers/theme_provider.dart';
-import 'package:portfolio/screens/AboutScreen/about_screen.dart';
-import 'package:portfolio/screens/HomeScreen/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../theme/app_theme.dart';
 import '../widgets/theme_button.dart';
 
-class SidebarScreen extends StatelessWidget {
-  const SidebarScreen({super.key});
+class SidebarScreen extends StatefulWidget {
+  final Widget child;
+
+  const SidebarScreen({super.key, required this.child});
+
+  @override
+  State<SidebarScreen> createState() => _SidebarScreenState();
+}
+
+class _SidebarScreenState extends State<SidebarScreen> {
+  late Widget _currentChild;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentChild = widget.child;
+  }
+
+  @override
+  void didUpdateWidget(covariant SidebarScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.child != widget.child) {
+      setState(() {
+        _currentChild = widget.child;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +61,17 @@ class SidebarScreen extends StatelessWidget {
                     height: height * 0.07,
                   ),
                   SizedBox(height: height * 0.09),
-                  _sidebarNavTexts("Home"),
+                  _sidebarNavTexts(context, "Home", "/home"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts("About"),
+                  _sidebarNavTexts(context, "About", "/about"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts("Skills"),
+                  _sidebarNavTexts(context, "Skills", "/"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts("Projects"),
+                  _sidebarNavTexts(context, "Projects", "/"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts("Blogs"),
+                  _sidebarNavTexts(context, "Blogs", "/"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts("Contact"),
+                  _sidebarNavTexts(context, "Contact", "/"),
                   SizedBox(height: height * 0.09),
                   Row(
                     children: [
@@ -71,13 +95,6 @@ class SidebarScreen extends StatelessWidget {
                           Constants.twitterUrl),
                       SizedBox(width: width * 0.0125),
                       const ThemeButton(),
-                      // CircleAvatar(
-                      //   backgroundColor: Colors.white,
-                      //   child: SvgPicture.asset(
-                      //     "svgs/notion.svg",
-                      //     height: 20,
-                      //   ),
-                      // ),
                     ],
                   ),
                   SizedBox(height: height * 0.075),
@@ -134,7 +151,7 @@ class SidebarScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: containerColor,
                     ),
-                    child: const AboutScreen(),
+                    child: _currentChild,
                   );
                 },
               ),
@@ -146,12 +163,17 @@ class SidebarScreen extends StatelessWidget {
   }
 }
 
-Widget _sidebarNavTexts(String text) {
-  return Text(
-    text,
-    textAlign: TextAlign.start,
-    style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
-      color: Colors.white,
+Widget _sidebarNavTexts(BuildContext context, String text, String route) {
+  return GestureDetector(
+    onTap: () {
+      context.go(route);
+    },
+    child: Text(
+      text,
+      textAlign: TextAlign.start,
+      style: AppTheme.lightTheme.textTheme.bodyMedium?.copyWith(
+        color: Colors.white,
+      ),
     ),
   );
 }

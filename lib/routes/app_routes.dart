@@ -1,12 +1,36 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/screens/AboutScreen/about_screen.dart';
+import 'package:portfolio/screens/sidebar_screen.dart';
 import '../screens/HomeScreen/home_screen.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 final GoRouter appRouter = GoRouter(
-  initialLocation: '/',
+  navigatorKey: navigatorKey,
+  initialLocation: '/home',
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomeScreen(),
-    ),
+    ShellRoute(
+      navigatorKey: GlobalKey<NavigatorState>(),
+      builder: (context, state, child) {
+        return SidebarScreen(child: child);
+      },
+      routes: [
+        GoRoute(
+          path: '/',
+          redirect: (context, state) => '/home',
+        ),
+        GoRoute(
+          path: '/home',
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: HomeScreen()),
+        ),
+        GoRoute(
+          path: '/about',
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: AboutScreen()),
+        )
+      ],
+    )
   ],
 );

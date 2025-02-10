@@ -1,5 +1,4 @@
-// file containing all web links
-import 'package:flutter/material.dart';
+// file containing all web links and constants
 
 class Constants {
   static const resumeUrl =

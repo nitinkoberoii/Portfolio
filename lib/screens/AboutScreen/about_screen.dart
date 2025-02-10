@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/screens/AboutScreen/app_texts.dart';
+import 'package:portfolio/screens/AboutScreen/profile_image_gradient_screen.dart';
 import 'package:portfolio/widgets/contact_rows.dart';
-
 import '../../constants.dart';
-import '../../theme/app_theme.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -55,10 +54,10 @@ class AboutScreen extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Container(
+                  SizedBox(
                     height: height * 0.75,
                     width: width * 0.28,
-                    color: Colors.yellow,
+                    child: const ProfileImageGradientScreen(),
                   ),
                 ],
               ),

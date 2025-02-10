@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/screens/HomeScreen/gradient_image_overlay.dart';
+import 'package:portfolio/widgets/contact_rows.dart';
 import 'package:portfolio/widgets/download_resume_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -143,50 +144,14 @@ class HomeScreen extends StatelessWidget {
                               // ----------- phone number and email ---------------
                               Column(
                                 children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        child: CircleAvatar(
-                                          radius: 12,
-                                          backgroundColor: theme.dividerColor,
-                                          child: SvgPicture.asset(
-                                            "svgs/call.svg",
-                                            height: 16,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: width * 0.005),
-                                      Text(
-                                        Constants.phoneNumber,
-                                        style:
-                                            theme.textTheme.bodySmall?.copyWith(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
+                                  const ContactRows(
+                                    assetPath: "svgs/call.svg",
+                                    text: Constants.phoneNumber,
                                   ),
                                   SizedBox(height: height * 0.01),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        child: CircleAvatar(
-                                          radius: 12,
-                                          backgroundColor: theme.dividerColor,
-                                          child: SvgPicture.asset(
-                                            "svgs/gmail.svg",
-                                            height: 16,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: width * 0.005),
-                                      Text(
-                                        Constants.email,
-                                        style:
-                                            theme.textTheme.bodySmall?.copyWith(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
+                                  const ContactRows(
+                                    assetPath: "svgs/gmail.svg",
+                                    text: Constants.email,
                                   ),
                                 ],
                               ),

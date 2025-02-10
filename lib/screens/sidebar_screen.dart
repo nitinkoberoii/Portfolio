@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/providers/theme_provider.dart';
+import 'package:portfolio/screens/AboutScreen/about_screen.dart';
 import 'package:portfolio/screens/HomeScreen/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 import '../widgets/theme_button.dart';
 
@@ -134,7 +134,7 @@ class SidebarScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       color: containerColor,
                     ),
-                    child: const HomeScreen(),
+                    child: const AboutScreen(),
                   );
                 },
               ),

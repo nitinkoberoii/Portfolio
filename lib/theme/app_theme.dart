@@ -53,7 +53,7 @@ class AppTheme {
       ),
       bodyLarge: TextStyle(
         fontFamily: 'Ubuntu',
-        fontSize: 24,
+        fontSize: 30,
         color: Appcolors.textDark,
       ),
       bodyMedium: TextStyle(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:portfolio/constants.dart';
 
 class GradientImageOverlay extends StatelessWidget {
   const GradientImageOverlay({super.key});
@@ -40,17 +38,7 @@ class GradientImageOverlay extends StatelessWidget {
               child: Image.asset(
                 "images/man.png",
                 height: 650,
-                // fit: BoxFit.cover,
               ),
-              // CachedNetworkImage(
-              //   imageUrl: Constants.imageUrl,
-              //   height: 250,
-              //   fit: BoxFit.cover,
-              //   placeholder: (context, url) =>
-              //       CircularProgressIndicator(), // Placeholder while loading
-              //   errorWidget: (context, url, error) =>
-              //       Icon(Icons.error, size: 100, color: Colors.red),
-              // ),
             ),
           ),
 

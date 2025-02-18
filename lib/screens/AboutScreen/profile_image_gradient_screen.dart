@@ -62,6 +62,7 @@ class ProfileImageGradientScreen extends StatelessWidget {
           "Nitin K. Oberoi",
           style: theme.textTheme.bodyLarge?.copyWith(
             fontSize: 35,
+            fontWeight: FontWeight.bold,
           ),
         ),
         Text(

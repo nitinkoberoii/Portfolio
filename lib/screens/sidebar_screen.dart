@@ -65,7 +65,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                   SizedBox(height: height * 0.03),
                   _sidebarNavTexts(context, "About", "/about"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts(context, "Skills", "/"),
+                  _sidebarNavTexts(context, "Skills", "/skills"),
                   SizedBox(height: height * 0.03),
                   _sidebarNavTexts(context, "Projects", "/"),
                   SizedBox(height: height * 0.03),

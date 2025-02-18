@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/screens/AboutScreen/app_texts.dart';
 import 'package:portfolio/screens/AboutScreen/profile_image_gradient_screen.dart';
 import 'package:portfolio/widgets/contact_rows.dart';
+import 'package:portfolio/widgets/download_resume_button.dart';
 import '../../constants.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -27,6 +28,7 @@ class AboutScreen extends StatelessWidget {
         children: [
           // ----------------- contains welcome text ------------------
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,6 +48,8 @@ class AboutScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              const Spacer(),
+              const DownloadResumeButton(),
             ],
           ),
           SizedBox(height: height * 0.01),

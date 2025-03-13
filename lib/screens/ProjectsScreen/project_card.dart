@@ -3,7 +3,20 @@ import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key});
+  final String type;
+  final String title;
+  final String link;
+  final List<String> techStack;
+  final String imagePath;
+
+  const ProjectCard({
+    super.key,
+    required this.type,
+    required this.title,
+    required this.link,
+    required this.techStack,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,23 +26,23 @@ class ProjectCard extends StatelessWidget {
     final bool isDarkMode = theme.brightness == Brightness.dark;
 
     return SizedBox(
-      height: height * 0.25,
-      width: width * 0.25,
+      height: height * 0.28,
+      width: width * 0.30,
       child: Card(
         surfaceTintColor: isDarkMode ? Colors.black : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 10,
         child: Row(
           children: [
             Padding(
               padding: EdgeInsets.all(height * 0.01),
               child: SizedBox(
-                width: width * 0.10,
+                width: width * 0.15,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Personal",
+                      type,
                       style: theme.textTheme.bodySmall?.copyWith(
                         fontStyle: FontStyle.italic,
                         height: 1,
@@ -41,7 +54,7 @@ class ProjectCard extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.02),
                     Text(
-                      "Nitin's Portfolio",
+                      title,
                       style: theme.textTheme.bodyLarge?.copyWith(
                         fontFamily: "Poppins",
                         fontSize: 34,
@@ -53,6 +66,20 @@ class ProjectCard extends StatelessWidget {
                       textScaler: const TextScaler.linear(1.0),
                     ),
                     const Spacer(),
+                    Row(
+                      children: techStack.take(4).map((imagePath) {
+                        return Padding(
+                          padding:
+                              const EdgeInsets.only(right: 8.0), // Add spacing
+                          child: Image.asset(
+                            imagePath,
+                            height: 20,
+                            fit: BoxFit.contain,
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: height * 0.02),
                     _projectLinkIcon(
                       isDarkMode,
                       "https://github.com/nitinkoberoii/Portfolio",
@@ -64,13 +91,13 @@ class ProjectCard extends StatelessWidget {
             ),
             const Spacer(),
             SizedBox(
-              height: height * 0.25,
-              width: width * 0.12,
+              height: height * 0.28,
+              width: width * 0.13,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  "images/photo.jpeg",
-                  fit: BoxFit.fill,
+                  imagePath,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

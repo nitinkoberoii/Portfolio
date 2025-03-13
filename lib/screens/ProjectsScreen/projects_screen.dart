@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/screens/ProjectsScreen/project_card.dart';
+import 'package:portfolio/screens/ProjectsScreen/projects_list.dart';
 
 import '../../widgets/download_resume_button.dart';
 
@@ -13,6 +14,8 @@ class ProjectsScreen extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
     final bool isDarkMode = theme.brightness == Brightness.dark;
+
+    final projects = ProjectsList.projects.take(4).toList();
 
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -53,23 +56,35 @@ class ProjectsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ProjectCard(),
-                    ProjectCard(),
+                    for (int i = 0; i < 2; i++)
+                      ProjectCard(
+                        type: projects[i]['type'],
+                        title: projects[i]['title'],
+                        link: projects[i]['link'],
+                        techStack: List<String>.from(projects[i]['techStack']),
+                        imagePath: projects[i]['imagePath'],
+                      ),
                   ],
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ProjectCard(),
-                    ProjectCard(),
+                    for (int i = 2; i < 4; i++)
+                      ProjectCard(
+                        type: projects[i]['type'],
+                        title: projects[i]['title'],
+                        link: projects[i]['link'],
+                        techStack: List<String>.from(projects[i]['techStack']),
+                        imagePath: projects[i]['imagePath'],
+                      ),
                   ],
                 ),
               ],
             ),
           ),
-          SizedBox(height: height * 0.03),
+          SizedBox(height: height * 0.05),
           SizedBox(
             height: height * 0.050,
             width: width * 0.11,

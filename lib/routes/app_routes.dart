@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/screens/AboutScreen/about_screen.dart';
+import 'package:portfolio/screens/ProjectsScreen/projects_screen.dart';
 import 'package:portfolio/screens/sidebar_screen.dart';
 import 'package:portfolio/screens/skills/skills_screen.dart';
 import '../screens/HomeScreen/home_screen.dart';
@@ -35,6 +36,11 @@ final GoRouter appRouter = GoRouter(
           path: '/skills',
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: SkillsScreen()),
+        ),
+        GoRoute(
+          path: '/projects',
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: ProjectsScreen()),
         ),
       ],
     )

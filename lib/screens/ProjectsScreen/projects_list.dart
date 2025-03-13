@@ -3,7 +3,9 @@ class ProjectsList {
     {
       'type': 'Personal',
       'title': "Nitin's Portfolio",
-      'link': "https://github.com/nitinkoberoii/Portfolio",
+      'link': [
+        "https://github.com/nitinkoberoii/Portfolio",
+      ],
       'techStack': [
         'images/skills/flutter.png',
         'images/skills/dart.png',
@@ -13,7 +15,9 @@ class ProjectsList {
     {
       'type': 'Flutter + Firebase',
       'title': "DiscussIt",
-      'link': "https://github.com/nitinkoberoii/Portfolio",
+      'link': [
+        "https://github.com/nitinkoberoii/DiscussIt",
+      ],
       'techStack': [
         'images/skills/flutter.png',
         'images/skills/dart.png',
@@ -25,7 +29,9 @@ class ProjectsList {
     {
       'type': 'Flutter + Firebase',
       'title': "Zoom Clone",
-      'link': "https://github.com/nitinkoberoii/Portfolio",
+      'link': [
+        "https://github.com/nitinkoberoii/Zoom-Clone",
+      ],
       'techStack': [
         'images/skills/flutter.png',
         'images/skills/dart.png',
@@ -37,7 +43,9 @@ class ProjectsList {
     {
       'type': 'Flutter + Node.js',
       'title': "Skribbl Clone",
-      'link': "https://github.com/nitinkoberoii/Portfolio",
+      'link': [
+        "https://github.com/nitinkoberoii/Skribbl_Clone",
+      ],
       'techStack': [
         'images/skills/flutter.png',
         'images/skills/dart.png',
@@ -47,6 +55,42 @@ class ProjectsList {
         'images/skills/node.webp',
       ],
       'imagePath': "images/projects/skribbl.jpeg",
+    },
+    {
+      'type': 'Node.js',
+      'title': "QuotesAPI",
+      'link': [
+        "https://github.com/nitinkoberoii/quotes-api",
+        "https://quotes-api-seven.vercel.app",
+      ],
+      'techStack': [
+        'images/skills/js.png',
+        'images/skills/node.webp',
+      ],
+      'imagePath': "images/projects/quotes.png",
+    },
+    {
+      'type': 'Flutter',
+      'title': "Foodie UI",
+      'link': [
+        "https://github.com/nitinkoberoii/Foodie-App-UI-Flutter/tree/master",
+      ],
+      'techStack': [
+        'images/skills/flutter.png',
+      ],
+      'imagePath': "images/projects/foodie.png",
+    },
+    {
+      'type': 'Flask + SQLite',
+      'title': "Blogging Site",
+      'link': [
+        "https://github.com/nitinkoberoii/Blogging-Site-with-Flask-and-SQLite",
+      ],
+      'techStack': [
+        'images/skills/flask.png',
+        'images/skills/sql.png',
+      ],
+      'imagePath': "images/projects/blog.png",
     },
   ];
 }

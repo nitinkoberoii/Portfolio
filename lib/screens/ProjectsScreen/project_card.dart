@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class ProjectCard extends StatelessWidget {
   final String type;
   final String title;
-  final String link;
+  final List<String> link;
   final List<String> techStack;
   final String imagePath;
 
@@ -80,10 +80,15 @@ class ProjectCard extends StatelessWidget {
                       }).toList(),
                     ),
                     SizedBox(height: height * 0.02),
-                    _projectLinkIcon(
-                      isDarkMode,
-                      "https://github.com/nitinkoberoii/Portfolio",
-                      context,
+                    Row(
+                      children: [
+                        if (link.isNotEmpty && link[0].contains("github"))
+                          _projectLinkIcon(
+                              isDarkMode, link[0], "svgs/github.svg", context),
+                        if (link.length > 1 && link[1].contains("vercel"))
+                          _projectLinkIcon(
+                              isDarkMode, link[1], "svgs/vercel.svg", context),
+                      ],
                     ),
                   ],
                 ),
@@ -117,7 +122,8 @@ void _openLink(String? linkUrl) async {
   }
 }
 
-Widget _projectLinkIcon(bool isDarkMode, String linkUrl, BuildContext context) {
+Widget _projectLinkIcon(
+    bool isDarkMode, String linkUrl, String iconPath, BuildContext context) {
   final height = MediaQuery.of(context).size.height;
   final width = MediaQuery.of(context).size.width;
 
@@ -132,7 +138,7 @@ Widget _projectLinkIcon(bool isDarkMode, String linkUrl, BuildContext context) {
     child: IconButton(
       onPressed: () => _openLink(linkUrl),
       icon: SvgPicture.asset(
-        "svgs/github.svg",
+        iconPath,
         height: 20,
         color: isDarkMode ? Colors.white70 : Colors.black,
       ),

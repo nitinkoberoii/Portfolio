@@ -1,11 +1,26 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ContactScreen extends StatelessWidget {
+class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
+
+  @override
+  State<ContactScreen> createState() => _ContactScreenState();
+}
+
+class _ContactScreenState extends State<ContactScreen> {
+  final List<TextEditingController> controllers = [
+    TextEditingController(), // Name
+    TextEditingController(), // Email
+    TextEditingController(), // Contact
+    TextEditingController(), // Message
+  ];
+
+  ValueNotifier<String?> selectedFileName = ValueNotifier(null);
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +89,7 @@ class ContactScreen extends StatelessWidget {
               ),
               const Spacer(),
               // ---------------------- contact form ------------------------
-              contactForm(height, width, theme),
+              contactForm(height, width, theme, controllers, selectedFileName),
             ],
           ),
           const SizedBox(),
@@ -84,7 +99,13 @@ class ContactScreen extends StatelessWidget {
   }
 }
 
-Widget contactForm(double height, double width, ThemeData theme) {
+Widget contactForm(
+  double height,
+  double width,
+  ThemeData theme,
+  List<TextEditingController> controllers,
+  ValueNotifier<String?> fileName,
+) {
   return Container(
     height: height * 0.50,
     width: width * 0.40,
@@ -116,41 +137,19 @@ Widget contactForm(double height, double width, ThemeData theme) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            customTextFields(height, width, theme, "Name"),
-            customTextFields(height, width, theme, "Email"),
+            customTextFields(height, width, theme, "Name", controllers[0]),
+            customTextFields(height, width, theme, "Email", controllers[1]),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            customTextFields(height, width, theme, "Contact"),
-            customTextFields(height, width, theme, "Message"),
+            customTextFields(height, width, theme, "Contact", controllers[2]),
+            customTextFields(height, width, theme, "Message", controllers[3]),
           ],
         ),
         SizedBox(height: height * 0.01),
-        SizedBox(
-          width: width * 0.085,
-          child: IconButton(
-            onPressed: () {},
-            icon: Row(
-              children: [
-                Icon(
-                  CupertinoIcons.arrow_up_doc,
-                  size: height * 0.02,
-                  color: Colors.white,
-                ),
-                const Spacer(),
-                Text(
-                  "Attach Files",
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        attachFileButton(height, width, theme, fileName),
         SizedBox(height: height * 0.01),
         submitButton(height, width, theme),
       ],
@@ -158,13 +157,66 @@ Widget contactForm(double height, double width, ThemeData theme) {
   );
 }
 
-Widget customTextFields(
-    double height, double width, ThemeData theme, String label,
+Widget attachFileButton(
+  double height,
+  double width,
+  ThemeData theme,
+  ValueNotifier<String?> selectedFileName,
+) {
+  return ValueListenableBuilder<String?>(
+    valueListenable: selectedFileName,
+    builder: (context, fileName, child) {
+      return Row(
+        children: [
+          SizedBox(
+            width: width * 0.085,
+            child: IconButton(
+              onPressed: () async {
+                try {
+                  FilePickerResult? result =
+                      await FilePicker.platform.pickFiles();
+                  if (result != null && result.files.isNotEmpty) {
+                    selectedFileName.value = result.files.single.name;
+                  }
+                } catch (e) {
+                  debugPrint("File picker error: $e");
+                }
+              },
+              icon: Row(
+                children: [
+                  Icon(
+                    CupertinoIcons.arrow_up_doc,
+                    size: height * 0.02,
+                    color: Colors.white,
+                  ),
+                  const Spacer(),
+                  Text(
+                    fileName != null && fileName.length > 12
+                        ? "${fileName.substring(0, 9)}..." // Truncate if >12 chars
+                        : fileName ?? "Attach File",
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      fontSize: 15,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Widget customTextFields(double height, double width, ThemeData theme,
+    String label, TextEditingController controller,
     {int maxLines = 1}) {
   return SizedBox(
     height: height * 0.08,
     width: label.contains("Message") ? width * 0.34 : width * 0.15,
     child: TextField(
+      controller: controller,
       cursorHeight: height * 0.02,
       cursorColor: Colors.white,
       maxLines: label.contains("Message") ? null : maxLines,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/screens/HomeScreen/gradient_image_overlay.dart';
 import 'package:portfolio/widgets/contact_rows.dart';
@@ -103,7 +104,8 @@ class HomeScreen extends StatelessWidget {
                                 height: height * 0.050,
                                 width: width * 0.15,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      GoRouter.of(context).go('/contact'),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,

@@ -69,10 +69,10 @@ class _SidebarScreenState extends State<SidebarScreen> {
                   SizedBox(height: height * 0.03),
                   _sidebarNavTexts(context, "Projects", "/projects"),
                   SizedBox(height: height * 0.03),
-                  _sidebarNavTexts(context, "Blogs", "/"),
-                  SizedBox(height: height * 0.03),
-                  _sidebarNavTexts(context, "Contact", "/"),
-                  SizedBox(height: height * 0.09),
+                  // _sidebarNavTexts(context, "Blogs", "/"),
+                  // SizedBox(height: height * 0.03),
+                  _sidebarNavTexts(context, "Contact", "/contact"),
+                  const Spacer(),
                   Row(
                     children: [
                       _appIcons("LinkedIn", "svgs/linkedin.svg", 26,

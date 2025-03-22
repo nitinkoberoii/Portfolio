@@ -99,7 +99,10 @@ class ProjectCard extends StatelessWidget {
               height: height * 0.28,
               width: width * 0.13,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
                 child: Image.asset(
                   imagePath,
                   fit: BoxFit.cover,

@@ -4,6 +4,7 @@ import 'package:portfolio/screens/AboutScreen/about_screen.dart';
 import 'package:portfolio/screens/ProjectsScreen/projects_screen.dart';
 import 'package:portfolio/screens/sidebar_screen.dart';
 import 'package:portfolio/screens/skills/skills_screen.dart';
+import '../screens/ContactScreen/contact_screen.dart';
 import '../screens/HomeScreen/home_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -41,6 +42,11 @@ final GoRouter appRouter = GoRouter(
           path: '/projects',
           pageBuilder: (context, state) =>
               const NoTransitionPage(child: ProjectsScreen()),
+        ),
+        GoRoute(
+          path: '/contact',
+          pageBuilder: (context, state) =>
+              const NoTransitionPage(child: ContactScreen()),
         ),
       ],
     )

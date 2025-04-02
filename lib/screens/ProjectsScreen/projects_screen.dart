@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/screens/ProjectsScreen/project_card.dart';
 import 'package:portfolio/screens/ProjectsScreen/projects_list.dart';
 
@@ -89,7 +91,7 @@ class ProjectsScreen extends StatelessWidget {
             height: height * 0.050,
             width: width * 0.11,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => GoRouter.of(context).push('/more-projects'),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

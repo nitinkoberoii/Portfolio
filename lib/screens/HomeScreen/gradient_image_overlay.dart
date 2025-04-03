@@ -33,11 +33,12 @@ class GradientImageOverlay extends StatelessWidget {
 
           // ------------ second layer --------------------------
           Positioned(
-            top: -50,
+            top: -220,
             child: ClipRRect(
               child: Image.asset(
-                "images/man.png",
-                height: 650,
+                "images/G2_1.png",
+                height: 1000,
+                scale: 0.63,
               ),
             ),
           ),

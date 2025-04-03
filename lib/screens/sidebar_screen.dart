@@ -56,10 +56,6 @@ class _SidebarScreenState extends State<SidebarScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "images/N_logo.png",
-                    height: height * 0.07,
-                  ),
                   SizedBox(height: height * 0.09),
                   _sidebarNavTexts(context, "Home", "/home"),
                   SizedBox(height: height * 0.03),

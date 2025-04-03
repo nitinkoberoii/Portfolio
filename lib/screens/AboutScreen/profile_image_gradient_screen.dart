@@ -23,7 +23,6 @@ class ProfileImageGradientScreen extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Positioned(
-                  left: 50,
                   top: 180,
                   child: Transform.rotate(
                     angle: 90 * pi / 180,
@@ -45,12 +44,12 @@ class ProfileImageGradientScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  right: 80,
-                  bottom: 50,
+                  right: 70,
+                  bottom: 37,
                   child: ClipOval(
                     child: Image.asset(
-                      "images/man.png",
-                      height: height * 0.60,
+                      "images/G4.png",
+                      height: height * 0.70,
                     ),
                   ),
                 ),

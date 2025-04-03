@@ -151,7 +151,8 @@ Widget contactForm(
         SizedBox(height: height * 0.01),
         attachFileButton(height, width, theme, fileName),
         SizedBox(height: height * 0.01),
-        submitButton(height, width, theme),
+        submitButton(
+            height, width, theme, controllers, () => sendEmail(controllers)),
       ],
     ),
   );
@@ -238,9 +239,34 @@ Widget customTextFields(double height, double width, ThemeData theme,
   );
 }
 
-Widget submitButton(double height, double width, ThemeData theme) {
+void sendEmail(List<TextEditingController> controllers) async {
+  final name = controllers[0].text;
+  final email = controllers[1].text;
+  final contact = controllers[2].text;
+  final message = controllers[3].text;
+
+  const String recipientEmail = Constants.email;
+  final String subject = Uri.encodeComponent("New Contact Form Submission");
+  final String body = Uri.encodeComponent(
+      "Name: $name\nEmail: $email\nContact: $contact\nMessage: $message");
+
+  final Uri emailUri = Uri(
+    scheme: 'mailto',
+    path: recipientEmail,
+    query: 'subject=$subject&body=$body',
+  );
+
+  if (await canLaunchUrl(emailUri)) {
+    await launchUrl(emailUri);
+  } else {
+    debugPrint("Could not launch email client.");
+  }
+}
+
+Widget submitButton(double height, double width, ThemeData theme,
+    List<TextEditingController> controllers, void Function() onTap) {
   return GestureDetector(
-    onTap: () {},
+    onTap: onTap,
     child: Container(
       padding: EdgeInsets.symmetric(horizontal: width * 0.01),
       height: height * 0.052,
